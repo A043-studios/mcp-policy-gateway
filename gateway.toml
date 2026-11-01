@@ -1,0 +1,59 @@
+# mcpgate policy for the demo. Everything the gateway enforces is in this file.
+# Review it like code: it is the security boundary, not the prompt.
+
+[gateway]
+owner = "tim@yourcompany.example"          # the person the agent works for
+egress_allow = ["yourcompany.example"]     # where data may go (emails, URLs, links)
+lockfile = "mcp.lock.json"                 # reviewed tool definitions and start commands
+audit_log = "audit.jsonl"
+max_calls = 50
+max_calls_per_tool = 20
+initial_labels = ["D"]                     # the request and the system prompt are private (Paper 1)
+
+[controls]                                 # all on; ablation.py switches them off one by one
+pinning = true
+least_privilege = true
+egress = true
+sanitise = true
+flow = true
+approval = "elicit"                        # elicit: ask the user | deny: never | stamp: always yes
+outbound_filter = true
+circuit_breaker = true
+
+# ---------- servers ----------
+# {python} is replaced by the interpreter that runs the gateway.
+
+[servers.mail]
+command = ["{python}", "demo/servers/mail.py"]
+trust = "internal"
+
+[servers.mail.tools.read_inbox]
+labels = ["U", "D"]          # an inbox is written by strangers AND private: two labels in one call
+effect = "none"              # reads only, and its arguments carry nothing out
+
+[servers.mail.tools.send_email]
+effect = "communication"
+recipient_args = ["to", "cc"]
+owner_reply_ok = true        # mailing the task owner is not an external effect
+
+[servers.mail.tools.delete_emails]
+effect = "destructive"
+
+[servers.files]
+command = ["{python}", "demo/servers/files.py"]
+trust = "internal"
+
+[servers.files.tools.read_file]
+labels = ["D"]
+
+[servers.weather]                          # installed from a marketplace
+command = ["{python}", "demo/servers/weather.py"]
+trust = "third_party"                      # its annotations are ignored, worst case assumed
+
+# ---------- profiles: one per task ----------
+
+[profiles.inbox_summary]
+allow = ["mail.read_inbox", "mail.send_email"]
+
+[profiles.assistant]                       # deliberately over-broad, used in the ablation
+allow = ["mail.read_inbox", "mail.send_email", "mail.delete_emails", "files.read_file", "weather.get_forecast"]

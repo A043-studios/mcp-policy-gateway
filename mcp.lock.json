@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "servers": {
+    "mail": {
+      "command": "sha256:f5c63fa61ca5bf6a2fd5bc54004eb496381c06f0e1e1cdb56157220aa9a2f02b",
+      "tools": {
+        "read_inbox": "sha256:2f7d769369f60086849fccf68ebf8b98b74ea7951022bf05566af3477d1eb510",
+        "send_email": "sha256:aca2ab9c5a2edb3443cf22fb171e96fdb276bfad4aae4edf417f92a8ae92ef91",
+        "delete_emails": "sha256:d6f96ea4ed3576187159e720745c005d3172ec35f6cca5c7aea5363f5736df48"
+      }
+    },
+    "files": {
+      "command": "sha256:2df28e6d09c4e3c1e7c1751e5e967c7e555cdadc2cb1f3973da4caddd68f4363",
+      "tools": {
+        "read_file": "sha256:e4f92770ddf3ff067ff9e62f967051d20a4016d43037fe75b1954f5429879322"
+      }
+    },
+    "weather": {
+      "command": "sha256:1e515ce91d4bf0a6793905b03a71963b547a8f9beb5010a2d7060fe1a4ba49ef",
+      "tools": {
+        "get_forecast": "sha256:17ac6ca1f1ab0e3e3ba7fda688a5eec440b7aa7dc6ecd9ec53b537b4b856dd7d"
+      }
+    }
+  }
+}

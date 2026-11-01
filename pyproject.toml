@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcpgate"
+version = "1.0.0"
+description = "A small policy gateway for the Model Context Protocol: pinning, least privilege, egress allowlist, Rule of Two, approvals, audit."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Tim Gelzleichter, A+43 Studios" }]
+dependencies = []
+
+[project.urls]
+Homepage = "https://www.a043.xyz"
+Repository = "https://github.com/A043-studios/mcp-policy-gateway"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "mcp>=2"]
+
+[project.scripts]
+mcpgate = "mcpgate.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

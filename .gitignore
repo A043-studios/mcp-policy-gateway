@@ -1,0 +1,7 @@
+audit.jsonl
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+demo/workspace/outbox.json
+demo/workspace/weather_version.txt

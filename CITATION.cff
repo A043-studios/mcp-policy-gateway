@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it and the working paper it accompanies."
+title: "mcp-policy-gateway: a policy gateway for the Model Context Protocol"
+type: software
+authors:
+  - family-names: Gelzleichter
+    given-names: Tim
+    affiliation: "A+43 Studios"
+version: 1.0.0
+date-released: 2026-11-01
+license: MIT
+repository-code: "https://github.com/A043-studios/mcp-policy-gateway"
+url: "https://www.a043.xyz"
+keywords:
+  - Model Context Protocol
+  - MCP
+  - prompt injection
+  - policy gateway
+  - agentic AI security
+preferred-citation:
+  type: report
+  title: "Who Decides: A Policy Gateway for the Model Context Protocol"
+  authors:
+    - family-names: Gelzleichter
+      given-names: Tim
+  institution:
+    name: "A+43 Studios"
+  number: "Working Paper No. 2026-02"
+  year: 2026
+  month: 11
+references:
+  - type: report
+    title: "When Agents Act: A Security Framework for Agentic AI Systems"
+    authors:
+      - family-names: Gelzleichter
+        given-names: Tim
+    institution:
+      name: "A+43 Studios"
+    number: "Working Paper No. 2026-01"
+    year: 2026
+    url: "https://www.a043.xyz/assets/papers/When-Agents-Act_A43-Working-Paper-2026-01.pdf"
